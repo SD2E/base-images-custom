@@ -1,0 +1,37 @@
+sudo: required
+
+services:
+  - docker
+
+matrix:
+  include:
+    - # develop builds and deploys edge
+      if: branch = develop
+      env:
+        - CHANNEL=edge
+    - # master builds and deploys stable
+      if: branch = master
+      env:
+        - CHANNEL=stable
+
+env:
+  global:
+    - REGISTRY_ORG=sd2e
+    - REGISTRY_USER=sd2etest
+
+script:
+  - make CHANNEL=$CHANNEL
+  - make tests CHANNEL=$CHANNEL
+
+after_script:
+  - docker images ${REGISTRY_ORG}/*
+
+before_deploy:
+  - docker login -u "${REGISTRY_USER}" -p "${REGISTRY_PASS}"
+
+deploy:
+  - make deploy CHANNEL=$CHANNEL
+  on:
+    branch:
+      - master
+      - develop

@@ -5,7 +5,8 @@ RUN cd /tmp && \
     conda install --quiet --yes -c probcomp -c cidermole -c fritzo -c ursusest \
         --file /tmp/conda_probcomp.txt
 
-RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
+#RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
+RUN conda install --quiet --yes \
     'beautifulsoup4=4.5.*' \
     'bokeh=0.12*' \
     'cloudpickle=0.2*' \
@@ -23,7 +24,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'numpy=1.11.*' \
     'pandas=0.18.*' \
     'patsy=0.4*' \
-    'pyflakes' \
+    'pyflakes=1.6*' \
     'pyzmq' \
     'scikit-image=0.12*' \
     'scikit-learn=0.17.*' \

@@ -1,4 +1,4 @@
-export CONTAINER_IMAGE ?= sd2e/reactors-python2-miniconda:probcomp
+export CONTAINER_IMAGE ?= sd2e/reactors-python2:<tagname>
 PYTEST_OPTS ?= "-s -vvv"
 PYTEST_DIR ?= "tests"
 
@@ -9,12 +9,12 @@ image:
 	docker build -f Dockerfile -t $(CONTAINER_IMAGE) .
 
 shell:
-	bash ../scripts/run_container_process.sh bash
+	bash scripts/run_container_process.sh bash
 
 tests: tests-pytest
 
 tests-pytest:
-	bash ../scripts/run_container_process.sh pytest $(PYTEST_DIR) $(PYTEST_OPTS)
+	bash scripts/run_container_process.sh pytest $(PYTEST_DIR) $(PYTEST_OPTS)
 
 deploy:
 	docker push $(CONTAINER_IMAGE)
