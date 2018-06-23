@@ -30,7 +30,8 @@ before_deploy:
   - docker login -u "${REGISTRY_USER}" -p "${REGISTRY_PASS}"
 
 deploy:
-  - make deploy CHANNEL=$CHANNEL
+  provider: script
+  script: make deploy CHANNEL=$CHANNEL
   on:
     branch:
       - master

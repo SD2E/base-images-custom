@@ -1,5 +1,7 @@
 # Extended SD2E Base Images
 
+[![Build Status](https://travis-ci.org/SD2E/base-images-custom.svg?branch=master)](https://travis-ci.org/SD2E/base-images-custom)
+
 This repository supports automatic build and maintenance of Docker images
 derived from generic sd2e base images. This offers a path to distribute
 images with complex extensions that might be widely usable but not quite to
