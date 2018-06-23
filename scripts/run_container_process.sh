@@ -35,7 +35,7 @@ if [ ! -d "${AGAVE_CREDS}" ]; then
     AGAVE_CREDS="${HOME}/.agave"
 fi
 if [ ! -f "${AGAVE_CREDS}/current" ]; then
-    die "No API credentials found in ${AGAVE_CREDS}"
+    log "No API credentials found in ${AGAVE_CREDS}"
 fi
 
 # Emphemeral directory

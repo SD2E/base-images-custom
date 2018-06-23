@@ -21,7 +21,7 @@ env:
 
 script:
   - make CHANNEL=$CHANNEL
-  - make tests CHANNEL=$CHANNEL
+  - make tests
 
 after_script:
   - docker images ${REGISTRY_ORG}/*
