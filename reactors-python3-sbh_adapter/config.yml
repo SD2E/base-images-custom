@@ -1,0 +1,15 @@
+# This is a placeholder config.yml file to demonstrate that
+# automatic config reading and OBBUILD support works
+---
+key1: value1
+logs:
+  file: ~
+  level: DEBUG
+  token: ~
+slack:
+  channel: notifications
+  icon_emoji: ":atom_symbol:"
+  username: sbh-bot
+  webhook: ~
+logger:
+  path: /logger/reactors

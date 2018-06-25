@@ -1,4 +1,4 @@
-PROJECTS = reactors-python2-miniconda-probcomp
+PROJECTS = reactors-python2-miniconda-probcomp reactors-python3-sbh_adapter
 
 TESTS = $(addsuffix '-test', $(PROJECTS))
 

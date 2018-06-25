@@ -1,4 +1,4 @@
-export CONTAINER_IMAGE ?= sd2e/reactors-python2-miniconda:probcomp
+export CONTAINER_IMAGE ?= sd2e/reactors-python3:sbh_adapter
 PYTEST_OPTS ?= "-s -vvv"
 PYTEST_DIR ?= "tests"
 
