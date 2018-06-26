@@ -9,8 +9,10 @@ RUN apt-get update && \
 ARG SBHADAPTER_BRANCH=master
 ARG SBOL_BRANCH=master
 ARG XPLAN_TO_SBOL_BRANCH=master
+ARG PYSBOL_BRANCH=master
 
-RUN pip3 install https://github.com/tcmitchell/pySBOL/blob/ubuntu/Ubuntu_16.04_64_3/dist/pySBOL-2.3.0.post11-cp36-none-any.whl?raw=true
+RUN git clone -b ${PYSBOL_BRANCH} https://github.com/SynBioDex/pySBOL.git
+RUN cd pySBOL && python3 setup.py install && cd ..
 
 RUN pip3 install --upgrade git+https://github.com/nroehner/pySBOLx.git@${SBOL_BRANCH}
 RUN pip3 install --upgrade git+https://github.com/SD2E/xplan_to_sbol.git@${XPLAN_TO_SBOL_BRANCH}
