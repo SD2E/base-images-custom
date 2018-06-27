@@ -15,17 +15,20 @@ tests:
 	for i in $(PROJECTS); do \
 		cd $$i; \
 		make tests; \
+		cd ../; \
 	done
 
 deploy:
 	for i in $(PROJECTS); do \
 		cd $$i; \
 		make deploy; \
+		cd ../; \
 	done
 
 clean:
 	for i in $(PROJECTS); do \
 		cd $$i; \
 		make clean; \
+		cd ../; \
 	done
 
