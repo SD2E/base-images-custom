@@ -6,18 +6,26 @@ RUN apt-get update && \
     apt-get -y install libxslt1-dev && \
     apt-get clean
 
-ARG SBHADAPTER_BRANCH=master
+ARG SBHADAPTER_BRANCH=linux_build
 ARG SBOL_BRANCH=master
 ARG XPLAN_TO_SBOL_BRANCH=master
 ARG PYSBOL_BRANCH=master
 
-RUN git clone -b ${PYSBOL_BRANCH} https://github.com/SynBioDex/pySBOL.git
-RUN cd pySBOL && python3 setup.py install && cd ..
+# RUN git clone -b ${PYSBOL_BRANCH} https://github.com/SynBioDex/pySBOL.git
+# RUN cd pySBOL && python3 setup.py install && cd ..
 
 RUN pip3 install --upgrade git+https://github.com/nroehner/pySBOLx.git@${SBOL_BRANCH}
 RUN pip3 install --upgrade git+https://github.com/SD2E/xplan_to_sbol.git@${XPLAN_TO_SBOL_BRANCH}
 RUN pip3 install --upgrade git+https://github.com/SD2E/synbiohub_adapter.git@${SBHADAPTER_BRANCH}
 
+# synbiohub_adapter uses appdirs to decide where to cache
+# appdirs, in turn, relies on the XDG spec for roaming profiles, but that
+# defaults to /root or / in a container environment. Abaco runs its
+# containers with a user, rather than root, user id, and thus those
+# directories aren't writeable. So, we set XDG_CACHE_HOME to point at
+# /tmp which is writeable and has the side effect of not growing the
+# container's footprint with cache data
+ENV XDG_CACHE_HOME=/tmp
 
 # Re-add ONBUILD support since this is derived from
 # an reactors image that has it
