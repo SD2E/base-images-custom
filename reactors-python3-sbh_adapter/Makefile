@@ -6,7 +6,7 @@ all: image
 	true
 
 image:
-	docker build -f Dockerfile -t $(CONTAINER_IMAGE) .
+	docker build --no-cache --force-rm -f Dockerfile -t $(CONTAINER_IMAGE) .
 
 shell:
 	bash ../scripts/run_container_process.sh bash
