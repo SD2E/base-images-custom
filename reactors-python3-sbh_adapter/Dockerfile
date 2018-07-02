@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get -y install libxslt1-dev && \
     apt-get clean
 
-ARG SBHADAPTER_BRANCH=linux_build
+ARG SBHADAPTER_BRANCH=master
 ARG SBOL_BRANCH=master
 ARG XPLAN_TO_SBOL_BRANCH=master
 ARG PYSBOL_BRANCH=master
